@@ -89,8 +89,6 @@ public class Expression
 			}
 				
 			token = new Identifier(sb.toString());
-			
-			//System.out.println("indentifier: " + sb.toString() + " length: " + sb.toString().length());// TESTING***
 		}
 		
 		else if(c == 0)
@@ -145,8 +143,6 @@ public class Expression
 			
 			token = new Literal(sb.toString());		
 		}		
-		//System.out.println("token: " + token.toString() + 
-		//		" length: " + token.toString().length());// TESTING***
 	}
 	
 	private void match(Token token)
@@ -187,12 +183,22 @@ public class Expression
 	{
 		int x = factor();
 		
-		while(Token.multiply.equals(token))
+		while(Token.multiply.equals(token) || Token.negative.equals(token)) //TESTING THIS!!*****
 	    {
-	        Token op = token;
-	        nextToken();
-	        int y = factor();
-	        x = apply(op, x, y);
+	    	if(Token.negative.equals(token))
+	    	{
+	    		Token op = Token.combine;
+	        	nextToken();
+	        	int y = factor();
+	        	x = apply(op, x, y);
+	    	}
+	    	else
+	    	{
+	    		Token op = token;
+	        	nextToken();
+	        	int y = factor();
+	        	x = apply(op, x, y);
+	    	}  
 	    }
 		
 		return x;
@@ -201,8 +207,13 @@ public class Expression
 	private int factor()
 	{
 		int x;
-		
-		//System.out.println("in factor: token = " + token.toString());	//TESTING***
+
+		if(Token.negative.equals(token))
+		{
+			nextToken();
+			x = -1 * exp();
+			return x;
+		}
 
 		if(Token.openParen.equals(token))
 		{
@@ -221,7 +232,6 @@ public class Expression
 		
 		else if(token instanceof Identifier)
 		{
-			//System.out.println(token.toString());		//TESTING***
 			x = ((Identifier)token).getValue().getValue();
 			nextToken();
 			return x;
@@ -234,9 +244,6 @@ public class Expression
 	private static int apply(Token op, int x, int y)
 	{
 		int z = 0;
-		
-		//System.out.println("in apply: x = " + x + "  y = " + y  + 
-		//					" : x " + op.toString() + " y");	//TESTING***
 		
 	    if(Token.combine.equals(op))
 	    	z = x + y;

@@ -20,7 +20,7 @@ public class Identifier extends Token
 	{
 		try
 		{
-			if(!Character.isLetter(input[0]) || input[0] == '_')
+			if(!Character.isLetter(input[0]) && !(input[0] == '_'))
 				throw new Exception("*** ERROR: Invalid Identifier ***");
 			
 			for(int i = 1; i < input.length; i++)

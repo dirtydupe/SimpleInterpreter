@@ -10,12 +10,14 @@ public class Assignment
 	public Assignment(String input) throws Exception 
 	{
 		String[] tokens = input.split("=");
+		String idStr = tokens[0].trim();
+		String exStr = tokens[1].trim();
 		
-		if(!(tokens[1].charAt(tokens[1].length() - 1) == ';'))
+		if(!(exStr.charAt(exStr.length() - 1) == ';'))
 			throw new Exception("*** ERROR: Assignment missing ';' ***");
 		
-		identifier = new Identifier(tokens[0].trim());
-		expression = new Expression((tokens[1].substring(0, tokens[1].length() - 1)).trim());
+		identifier = new Identifier(idStr);
+		expression = new Expression((exStr.substring(0, exStr.length() - 1)));
 		
 		assignmentMap.put(identifier.toString(), expression);
 	}

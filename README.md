@@ -19,7 +19,7 @@ or
 
 #### execute a sequence of commands from a file:
 
-	java Interpreter <file>
+	java Interpreter <filename>
 
 
 ## Grammar

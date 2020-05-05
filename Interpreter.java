@@ -37,10 +37,11 @@ public class Interpreter
 				if(input.equals("quit"))
 					loop = false;
 				else
+				{
 					assignment = new Assignment(input);
-				
-				System.out.println(assignment.getIdentifier().toString() + " = " +
+					System.out.println(assignment.getIdentifier().toString() + " = " +
 						assignment.getExpression().getValue());
+				}	
 			} 
 			while(loop);	
 		}
