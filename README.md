@@ -1,10 +1,15 @@
-#### Usage instructions:
+#SimpleInterpreter
+
+An interpreter for a simple language.
+
+
+## Usage instructions:
 	
 #### Compile
 
 	javac Interpreter.java
 
-#### Run options:
+### Run options:
 
 #### CLI:
 	
@@ -17,7 +22,7 @@ or
 	java Interpreter <file>
 
 
-### Grammar
+## Grammar
 
 Program:
 
