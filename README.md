@@ -1,3 +1,22 @@
+#### Usage instructions:
+	
+#### Compile
+
+	javac Interpreter.java
+
+#### Run options:
+
+#### CLI:
+	
+	java Interpreter
+
+or
+
+#### execute a sequence of commands from a file:
+
+	java Interpreter <file>
+
+
 ### Grammar
 
 Program:
